@@ -1,7 +1,6 @@
 from importlib import import_module as mload
 from pkgutil import walk_packages
 from functools import partial
-import locale
 
 from multiprocessing import Pool
 
@@ -17,7 +16,7 @@ class Ranker(object):
     be assumed to be a part of our metrics
     """
 
-    def __init__(self, metrics_module='metrics', function_name="score"):
+    def __init__(self, metrics_module='ranking.metrics', function_name="score"):
         root = mload(metrics_module)
         all_packages = walk_packages(root.__path__, root.__name__ + ".")
         
@@ -32,5 +31,11 @@ class Ranker(object):
         scores = self.pool.map(rank_op, self.metrics)
         return dict(zip(self.names, scores))
 
-test = Ranker() 
-print test.all_scores('indico.io')
+RANKER = Ranker()
+
+def get_rank(url):
+    return RANKER.all_scores(url)
+
+if __name__ == "__main__":
+    test = Ranker() 
+    print test.all_scores('stackoverflow.com')

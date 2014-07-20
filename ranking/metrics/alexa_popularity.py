@@ -9,7 +9,8 @@ def score(url):
 
 def get_popularity(document):
     links_in = document.xpath('//POPULARITY')
-    return links_in[0].get('TEXT')
+    return int(links_in[0].get('TEXT'))
 
 if __name__ == "__main__":
-    print score('indico.io')
+    import sys
+    print score(sys.argv[1])

@@ -9,7 +9,8 @@ def score(url):
 
 def get_reach(document):
     links_in = document.xpath('//REACH')
-    return links_in[0].get('RANK')
+    return int(links_in[0].get('RANK'))
 
 if __name__ == "__main__":
-    print score('indico.io')
+    import sys
+    print score(sys.argv[1])
