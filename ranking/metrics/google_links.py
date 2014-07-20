@@ -7,3 +7,6 @@ def score(url):
     search_results = urllib.urlopen(url).read()
     results = json.loads(search_results)
     return int(results['responseData']['cursor']['estimatedResultCount'])
+
+if __name__ == "__main__":
+    print score('stackoverflow.com')

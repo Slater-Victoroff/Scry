@@ -13,7 +13,11 @@ def score(url):
 def get_results(document):
     results_selector = CSSSelector('div#b_tween span.sb_count')
     results = results_selector(document)
-    return int(results[0].text.replace(',', '').split()[0])
+    try:
+        return int(results[0].text.replace(',', '').split()[0])
+    except IndexError:
+        return 0
 
 if __name__ == "__main__":
-    print score('indico.io')
+    import sys
+    print score(sys.argv[1])

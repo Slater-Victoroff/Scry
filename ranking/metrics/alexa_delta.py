@@ -12,4 +12,4 @@ def get_delta(document):
     return links_in[0].get('DELTA')
 
 if __name__ == "__main__":
-    print score('indico.io')
+    print score('stackoverflow.com')

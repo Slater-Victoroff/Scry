@@ -12,4 +12,5 @@ def get_links_in(document):
     return links_in[0].get('NUM')
 
 if __name__ == "__main__":
-    score('indico.io')
+    import sys
+    print score(sys.argv[1])
