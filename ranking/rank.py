@@ -1,6 +1,7 @@
 from importlib import import_module as mload
 from pkgutil import walk_packages
 from functools import partial
+import locale
 
 from multiprocessing import Pool
 
